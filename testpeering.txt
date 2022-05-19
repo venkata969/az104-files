@@ -1,0 +1,22 @@
+RG=peeringRG
+echo ${RG}
+
+vnetName111=east-Vnet1111
+vnetName222=EAST-Vnet2222
+vnetName333=west-Vnet3333
+
+echo "vnet peering 1111 to 2222"
+  az network vnet peering create -g ${RG} -n MyVnet111ToMyVnet222 --vnet-name $vnetName111 \
+    --remote-vnet $vnetName222 --allow-vnet-access
+	
+echo "vnet peering 222 to 1111"
+  az network vnet peering create -g ${RG} -n MyVnet222ToMyVnet111 --vnet-name $vnetName222 \
+    --remote-vnet $vnetName111 --allow-vnet-access
+	
+echo "vnet peering 111 to 333"
+  az network vnet peering create -g ${RG} -n MyVnet111ToMyVnet333 --vnet-name $vnetName111 \
+    --remote-vnet $vnetName333 --allow-vnet-access
+	
+echo "vnet peering 333 to 111"
+  az network vnet peering create -g ${RG} -n MyVnet333ToMyVnet111 --vnet-name $vnetName333 \
+    --remote-vnet $vnetName111 --allow-vnet-access
